@@ -1,0 +1,12 @@
+0	1	mikroCPIC1618.exe -MSF -DBG -pP18F4550 -GC -DL -O11111114 -fo16 -N"C:\Users\rafaa\Documents\GitHub\PIC-Lessons\TIMER0\TIMER0.mcppi" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Defs\" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\uses\P18\" -SP"C:\Users\rafaa\Documents\GitHub\PIC-Lessons\TIMER0\" -IP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\uses\P18\" -IP"C:\Users\rafaa\Documents\GitHub\PIC-Lessons\TIMER0\" "TIMER0.c" "__Lib_Math.mcl" "__Lib_MathDouble.mcl" "__Lib_System.mcl" "__Lib_Delays.mcl"	 
+hint: 0	1139	Available RAM: 2027 [bytes], Available ROM: 32768 [bytes]	 
+diagnostics: 0	122	Compilation Started	TIMER0.c
+diagnostics: 29	123	Compiled Successfully	TIMER0.c
+diagnostics: 0	127	All files Compiled in 94 ms	 
+hint: 0	1144	Used RAM (bytes): 2 (1%)  Free RAM (bytes): 2025 (99%)	Used RAM (bytes): 2 (1%)  Free RAM (bytes): 2025 (99%)
+hint: 0	1144	Used ROM (bytes): 108 (1%)  Free ROM (bytes): 32660 (99%)	Used ROM (bytes): 108 (1%)  Free ROM (bytes): 32660 (99%)
+diagnostics: 0	125	Project Linked Successfully	TIMER0.mcppi
+hint: 0	1004	COFF file successfully generated	COFF file successfully generated
+diagnostics: 0	128	Linked in 297 ms	 
+diagnostics: 0	129	Project 'TIMER0.mcppi' completed: 407 ms	 
+diagnostics: 0	103	Finished successfully: 14 dez 2018, 00:25:42	TIMER0.mcppi
