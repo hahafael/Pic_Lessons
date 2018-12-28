@@ -1,14 +1,13 @@
 //O usuário tem 10 segundos para apertar em uma quantidade de x vezes um botão. Ao final dos 10 segundos, o número de vezes em que o botão foi apertado
 //será     gerado um pwm na saída com duty cicle proporcional.
 
-#define  select   LATB0_bit
+#define  select   RB0_bit    //leitura, PORTX
+
 
 int temp=0;
 int cont=0;
-bit flag;
-
-
 void tempo();
+void button();
 
 void InitMain(){
 
@@ -19,7 +18,7 @@ void InitMain(){
      TMR0H =  0x85;
      TMR0L =  0xEE;
      T0CON =  0x84; //Liga TMR0 no modo de 16 bits e prescaler 1:32
-     flag = 0;
+
 
      //O cálculo de tempo de estouro do timer0 é :
      //(65536- TMR0) * prescaler * ciclo de maquina
@@ -39,8 +38,9 @@ void main() {
                             TMR0IF_bit = 0;
                             TMR0H = 0x85;
                             TMR0L = 0xEE;
-                            temp++;
-                            if(!flag) tempo();
+                            tempo();
+                            button();
+
 
               }
               
@@ -51,31 +51,34 @@ void main() {
 
 
 void tempo(){
+     temp++;
      if(temp == 0x28){         //tempo do usuário apertar o botão acaba.
-             temp = 0;
-             flag = 0x01;
-             switch (cont){
-                     case 0:
-                     PWM1_Set_Duty(0);
-                     case 1:
-                     PWM1_Set_Duty(0);
-                     case 2:
-                     PWM1_Set_Duty(30000);
-                     case 3:
-                     PWM1_Set_Duty(0);
-                     case 4:
-                     PWM1_Set_Duty(30000);
+       switch(cont){
+                    case 0:
+                    PWM1_Set_Duty(0);
+                    break;
+                    case 1:
+                    PWM1_Set_Duty(55000);
+                    break;
+                    case 2:
+                    PWM1_Set_Duty(0);
+                    break;
+                    case 3:
+                    PWM1_Set_Duty(55000);
+                    break;
+       
+       
+       }
 
-              }
-             
-     
-     }
-     else{
-          if(select){
-                     cont++;
-          }
-     
-     }
 
 
      }
+
+}
+void button(){
+         if(select){
+                    cont++;
+         }
+
+
+}
