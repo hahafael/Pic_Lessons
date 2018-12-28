@@ -6,7 +6,7 @@ Value=0
 [BUILD_TYPE]
 Value=0
 [ACTIVE_TAB]
-Value=TIMER0_PWM.c
+Value=..\INTERRUPTS\INTERRUPTS.c
 [USE_EEPROM]
 Value=0
 [USE_HEAP]
@@ -24,8 +24,7 @@ Count=0
 Count=0
 ActiveImageIndex=-1
 [OPENED_FILES]
-File0=TIMER0_PWM.c
-Count=1
+Count=0
 [EEPROM]
 Count=0
 [ACTIVE_COMMENTS_FILES]
@@ -44,7 +43,8 @@ Count=0
 File0=PWM
 Count=1
 [EXPANDED_NODES]
-Count=0
+0=MyProject.mcppi
+Count=1
 [LIB_EXPANDED_NODES]
 0=mikroE Libraries
 1=System Libraries
