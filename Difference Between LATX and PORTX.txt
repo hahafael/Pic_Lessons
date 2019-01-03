@@ -1,0 +1,17 @@
+Sobre Leitura/Escrita nos LATX e PORTX
+
+Ao escrever um bit em um pino de I/O, armazena-se esse bit do Data-Bus para
+o registrador de dados (um flip flop D). Se TRISX desse bit é 0, os dados de Q
+do registrador de dados estará no pino de I/O. Portanto, escrita em um LATX ou
+PORTX é o mesmo. 
+
+Em contrapartida, leitura do LAT? X diferente do leitura do PORTX. 
+
+Ao ler do LATX, lê-se o que está no registro de dados (flip flop D). Já ao
+realizar a leitura do PORTX, lÊ-se diretamente o valor  atual do pino de I/O. 
+
+
+Por isso, é usual realizar a escrita no LATX e a leitura dos PORTX, para que 
+o nível atual seja pego, que é o que interessa.
+
+Resumindo, escrita em qualquer um, leitura apenas no port!!
