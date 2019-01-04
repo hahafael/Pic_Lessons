@@ -6,6 +6,7 @@
 #define row_B   RD4_bit
 #define row_C   RD5_bit
 #define row_D   RD6_bit
+#define teste   RA0_bit
 #define  led   RD7_bit
 
 
@@ -17,11 +18,19 @@ char control = 0x01;
 
 void interrupt()
 {
-   if(TMR0IF_bit){               //estouro a cada 250ms
+
+
+     //O cálculo de tempo de estouro do timer0 é :
+     //(65536- TMR0) * prescaler * ciclo de maquina
+     //(65536 - 0x85EE )*8* 1/4M
+     //(65536 - 34286)*8*250n =  62,5ms
+
+   if(TMR0IF_bit){               //estouro a cada 62,5ms
 
      TMR0IF_bit = 0;
      TMR0H = 0x85;
      TMR0L = 0xEE;
+     teste = ~teste;
 
 
       if(col_1 && control == 0x01)        //Coluna 1 em nível high? Control igual 1?
@@ -75,12 +84,15 @@ void interrupt()
 // --- Função Principal
 void main()
 {
+     TRISA =  0x00;
+     PORTA =  0x00;
      TRISD =  0x78; // = 0b01111000
      PORTD =  0x7F; // = 0b01111111
      ADCON1 = 0x0F; //entradas e saídas digitais
+     INTCON = 0xA0;// 0b10100000 interrupções globais ligadas
      TMR0H =  0x85;
      TMR0L =  0xEE;
-     T0CON =  0x84; //Liga TMR0 no modo de 16 bits e prescaler 1:32
+     T0CON =  0x82; //Liga TMR0 no modo de 16 bits e prescaler 1:8
 
 
      while(1)                             //Loop Infinito
@@ -98,9 +110,10 @@ void pulse(char number)
 
    for(i=0;i<number;i++)
    {
-     led = ~led;
+     led = 0x01;
      delay_ms(200);
-
+     led = 0x00;
+     delay_ms(200);
    }
 
 
