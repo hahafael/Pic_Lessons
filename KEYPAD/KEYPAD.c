@@ -7,7 +7,7 @@
 #define row_C   RD5_bit
 #define row_D   RD6_bit
 #define teste   RA0_bit
-#define  led   RD7_bit
+#define  led    RD7_bit
 
 
 void pulse(char number);                //Função para pulsar o led
